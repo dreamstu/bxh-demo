@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>导航条点击鼠标下划线跟随滑动效果</title>
+	<link rel="stylesheet" type="text/css" href="css/menu.css">
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/menu.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		var start = $('#nav').menu({
+		});
+	});
+	</script>
+</head>
+<body>
+	<div class="bg">
+		<div id="nav">
+			<ul class="menu">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Introduce</a></li>
+				<li><a href="#">Product</a></li>
+				<li><a href="#">Contact</a></li>
+				<li><a href="#">About us</a></li>
+				<li><a href="#">News</a></li>
+				<li class="active"></li>
+			</ul>
+		</div>
+	</div>
+	
+</body>
+</html>

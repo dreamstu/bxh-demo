@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+*{
+	margin: 0 auto;
+	padding: 0;
+}
+#nav{
+	text-align: center;
+	width: 700px;
+}
+#nav .menu{
+	height: 40px;
+	line-height: 40px;
+	position: relative;
+}
+#nav .menu li{
+	list-style: none;
+	float: left;
+    width: 90px;
+    margin: 0 10px;
+    border-bottom: 1px solid #fff;
+}
+#nav .menu li a{
+	text-decoration: none;
+    color: #000;
+    outline: none;
+}
+#nav .menu li.active{
+	/*color: #f00;*/
+	border-bottom-color: #f00;
+	position: absolute;
+	top: 40px;
+}
+#nav .menu li a.color{
+	color: #f00;
+}

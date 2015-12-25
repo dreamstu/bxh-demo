@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript"> 
+
+	$(document).ready(function(){
+		var silder = $('#myFocus').silder({
+			pointEvent:'mouseover'
+		});
+		// $('#prevbtn').on('click',function(){
+		// 	silder.toPrev();
+		// })
+		// $('#nextbtn').on('click',function(){
+		// 	silder.toNext();
+		// });
+	});
+	</script>
+</head>
+<body>
+	<div class="focus" id="myFocus">
+		<ul class="banner">
+			<li><img src="img/banner1.jpg"></li>
+			<li><img src="img/banner2.jpg"></li>
+			<li><img src="img/banner3.jpg"></li>
+			<li><img src="img/banner4.jpg"></li>
+		</ul>
+		<div class="btn">
+			<!-- <span>1</span>
+			<span>2</span>
+			<span>3</span>
+			<span>4</span> -->
+		</div>
+		<div id="prevbtn" class="prev">&lt;</div>
+		<div id="nextbtn" class="next">&gt;</div>
+	</div>
+</body>
+</html>

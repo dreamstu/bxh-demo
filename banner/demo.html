@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>banner</title>
+	<link rel="stylesheet" type="text/css" href="css/demo.css">
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<!-- <script type="text/javascript" src="js/sl.js"></script> -->
+	<script type="text/javascript">
+	//PLUGIN
+	(function($) {
+		var defaultOps = {
+			pointEvent:'click'
+		};
+		$.fn.silder = function(ops) {
+			var option = $.extend(defaultOps,ops,true);
+
+	     	var box = this;
+			var banner = $('.banner',box);
+			var btnBox = $('.btn',box);
+			var lis = banner.find('li');
+			var count = lis.length;
+			var currIdx = 0;
+			var interval = null;
+
+			var html = getBtnsHtml(count);
+			btnBox.html(html);
+
+			begin();
+
+			function begin(){
+				interval = setInterval(function(){
+					if(currIdx<count-1){
+						currIdx++;
+					}else{
+						currIdx=0;
+					}
+					box.showThis(currIdx);
+				},2000);
+			}
+
+			function getBtnsHtml(count){
+				var temp = '';
+				for (var i = 1; i <= count; i++) {
+					temp += '<span class="item">'+i+'</span>';
+				};
+				return temp;
+			}
+
+			this.showThis = function(idx){
+				//ie8 !css3
+				// banner.animate({
+				// 	top:-280*idx
+				// },500);
+				banner.css({
+					left:-800*idx
+				});
+				var items = btnBox.find('.item');
+				items.removeClass('on');
+				items.eq(idx).addClass('on');
+			}
+
+			this.toNext = function(){
+				if(currIdx<count-1){
+					currIdx++;
+				}else{
+					currIdx=0;
+				}
+				this.showThis(currIdx);
+			}
+
+			this.toPrev = function(){
+				if(currIdx>0){
+					currIdx--;
+				}else{
+					currIdx=count-1;
+				}
+				this.showThis(currIdx);
+			}
+
+			btnBox.on(option.pointEvent,'.item',function(){
+				box.showThis($(this).index());
+			});
+
+			box.on('mouseover',function(){
+				clearInterval(interval);
+			}).on('mouseout',function(){
+				begin();
+			});
+
+			return this;
+		};     
+	})(jQuery);
+
+	$(document).ready(function(){
+		var silder = $('#myFocus').silder({
+			pointEvent:'mouseover'
+		});
+
+		$('#test').on('click',function(){
+			silder.showThis(3);
+		});
+		$('#nextbtn').on('click',function(){
+			silder.toNext();
+		});
+		$('#prevbtn').on('click',function(){
+			silder.toPrev();
+		});
+	});
+	</script>
+</head>
+<body>
+	<div class="focus" id="myFocus">
+		<ul class="banner">
+			<li>
+				<a href="" target="_blank"><img src="img/03.jpg" alt=""/></a>
+			</li>
+			<li>
+				<a href="" target="_blank"><img src="img/02.jpg" alt=""/></a>
+			</li>
+			<li>
+				<a href="" target="_blank"><img src="img/03.jpg" alt=""/></a>
+			</li>
+			<li>
+				<a href="" target="_blank"><img src="img/02.jpg" alt=""/></a>
+			</li>
+		</ul>
+		<div class="btn">
+		</div>
+		<div class="preNext pre"></div>
+		<div class="preNext next"></div>
+	</div>
+	<button id="test">to4</button>
+	<button id="nextbtn">next</button>
+	<button id="prevbtn">prev</button>
+</body>
+</html>
